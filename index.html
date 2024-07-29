@@ -11,6 +11,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  		<script type="text/javascript">
+    		(function() {
+      		emailjs.init("hhTI-EEkRClvIwJ0S"); // Replace "YOUR_USER_ID" with your EmailJS user ID
+    		})();
+  		</script>
+
 	</head>
 	<body class="is-preload">
 
@@ -308,7 +315,7 @@
 						<div class="inner medium">
 							<h2>Get in touch</h2>
 							<p>I would love to hear from you! <br> Whether you have questions, collaboration ideas, or just want to connect, feel free to reach out.<br> Let's engage in meaningful conversations and explore potential opportunities together.</p>
-							<form method="post" action="#">
+							<form id="contact-form">
 								<div class="fields">
 									<div class="field half">
 										<label for="name">Name</label>
@@ -330,6 +337,21 @@
 
 						</div>
 					</section>
+
+					<!-- EmailJS for sending the email responses -->
+					<script type="text/javascript">
+						document.getElementById('contact-form').addEventListener('submit', function(event) {
+						  event.preventDefault();
+					
+						  emailjs.sendForm('service_lghk8ac', 'template_emxd3ij', this)
+							.then(function() {
+							  alert('Your message has been sent successfully!');
+							  document.getElementById('contact-form').reset();//reset the form
+							}, function(error) {
+							  alert('Failed to send the message, please try again.');
+							});
+						});
+					  </script>
 
 				<!-- Footer -->
 					<footer class="wrapper style1 align-center">
